@@ -31,13 +31,13 @@ The cornerstone of our solution. Instead of relying on a raw conversation log, w
 -   **Living Blueprint:** This map is updated after *every* successful development step. It acts as a single source of truth for the AI.
 -   **Instructional Integrity:** When a new request is made, the entire Symbolic Map is passed to the LLM with the strict instruction to **MODIFY and EXTEND** this map, not to start over.
 
-### 2. Quantum-Inspired Vector Compression
+### 2. Semantic Context Compression
 
 While the Symbolic Map holds the *what* (the code), we also need a way to remember the *why* (the conversational context) without sending the full transcript.
 
--   **Conversational Essence:** We use a sentence-transformer model (`all-MiniLM-L6-v2`) to encode the user-assistant dialogue into dense vector embeddings.
--   **Contextual Averaging:** When the conversational history reaches a certain threshold, these embeddings are compressed into a single, averaged vector. This vector mathematically represents the "gist" of the recent conversation.
--   **Conceptual Name:** The term "Quantum-Inspired" refers to the concept of representing a complex state (the conversation) as a single, collapsed entity (the averaged tensor), similar to how a quantum state collapses upon measurement.
+-   **Vector Encoding:** We use a sentence-transformer model (`all-MiniLM-L6-v2`) to encode the user-assistant dialogue into dense vector embeddings, capturing the semantic essence of each turn.
+-   **Context Averaging:** To maintain efficiency, when the dialogue history reaches a certain threshold, these embeddings are mathematically compressed into a single, averaged vector. This vector represents the "gist" of the recent conversation.
+-   **The "Collapse" Analogy:** A useful metaphor for this process is to think of it as a "context collapse." Much like a complex quantum state with many possibilities collapses to a single point upon measurement, the entire recent conversational history is "collapsed" into a single, dense vector that efficiently preserves its core meaning for the LLM.
 
 These two components are combined into a **Synergistic Prompt** that gives the LLM everything it needs in the most efficient format possible:
 1.  **Strict Instructions** on its role.
