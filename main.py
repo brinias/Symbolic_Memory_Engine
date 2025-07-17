@@ -74,7 +74,7 @@ class StatsTracker:
             self.logger.info("Context Reduction: N/A")
 
 # ==============================================================================
-# Unchanged Classes (Config, QuantumEncoder)
+# (Config, QuantumEncoder)
 # ==============================================================================
 class Config:
     def __init__(self, logger: Logger, threshold: int):
