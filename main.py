@@ -242,22 +242,24 @@ class ContextManager:
 
     async def compress_vectors_if_needed(self):
         
-        # -----------------------------------------------------------------------------
-        # 🧠 Semantic Compression (Quantum Collapse)
-        # -----------------------------------------------------------------------------
-        # This compresses the semantic history of user + assistant turns into a single
-        # second-order tensor (outer-product embedding). While not used directly in the
-        # prompt yet, it serves as a "context fingerprint" that summarizes the meaning
-        # of the dialogue history compactly and consistently.
-        #
-        # This enables future capabilities such as:
-        # - Semantic recall and session similarity
-        # - Lightweight context anchoring without full history
-        # - Session clustering, deduplication, and meta-reasoning
-        # - Prompt routing or intent estimation based on latent context
-        #
-        # Think of it as a low-dimensional, compressed signature of the session's meaning.
-        # It's the semantic counterpart to version control: small, consistent, and reusable.
+        """
+        -----------------------------------------------------------------------------
+        🧠 Semantic Compression (Quantum Collapse)
+        -----------------------------------------------------------------------------
+        This compresses the semantic history of user + assistant turns into a single
+        second-order tensor (outer-product embedding). While not used directly in the
+        prompt yet, it serves as a "context fingerprint" that summarizes the meaning
+        of the dialogue history compactly and consistently.
+        
+        This enables future capabilities such as:
+        - Semantic recall and session similarity
+        - Lightweight context anchoring without full history
+        - Session clustering, deduplication, and meta-reasoning
+        - Prompt routing or intent estimation based on latent context
+        
+        Think of it as a low-dimensional, compressed signature of the session's meaning.
+        It's the semantic counterpart to version control: small, consistent, and reusable.
+        """
         
         if len(self.history) >= self.config.CONTEXT_THRESHOLD:
             self.logger.print_header("Compressing Vector History")
